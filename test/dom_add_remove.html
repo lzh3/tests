@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>模板</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="shortcut icon" type="images/x-images" href="C:/Users/Asus/Desktop/假期作业/img/select/bq5.png" />
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+
+	.wrap{
+		display: flex;
+		width:600px;
+		margin:20px auto;
+		border:2px solid blue;
+	}
+	.wrap .box{
+		width:50%;
+		height: 420px;
+		user-select: none;
+	}
+	#hot{
+		width:50%;
+		padding:0 15px;
+		background: rgba(204, 204, 204, .6);
+	}
+	#aim{
+		background: #fcc;
+	}
+	.wrap .box h2{
+		width:100%;
+		height: 35px;
+		line-height: 35px;
+		font-size: 20px;
+		text-align: center;
+	}
+	.box .city{
+		width:100%;
+		margin-bottom: 10px;
+	}
+	.box .city span{
+		display: inline-block;
+		margin:5px;
+		padding:2px 3px;
+		border:1px solid skyblue;
+		cursor:pointer;
+	}
+	.box .city span:hover{
+		background: rgba(204, 204, 204, .8);
+	}
+	.box .sec{
+		width:100%;
+	}
+	.box .sec p{
+		float:left;
+		margin:10px 3px 5px;
+		padding:2px 3px;
+		border:1px solid #c0c;
+	}
+	.box .sec span{
+		padding-left:2px;
+		cursor:pointer;
+	}
+	#add{
+		width:100%;
+	}
+	#add p{
+		float:left;
+		margin:10px 3px 5px;
+		padding:2px 3px;
+		border:1px solid #c0c;
+	}
+	#aim{
+		padding:0 15px;
+	}
+</style>
+</head>
+<body>
+    <div class="wrap">
+    	<div class="box" id="hot">
+    		<h2>热门城市</h2>
+    		<div class="city">
+    			<span>马来西亚</span>
+    			<span>新加坡</span>
+    			<span>深圳</span>
+	    		<span>上海</span>
+	    		<span>武汉</span>
+	    		<span>杭州</span>
+	    		<span>成都</span>
+	    		<span>北京</span>
+    		</div>
+    		<hr>
+    		<div class="sec">
+    			<!-- <p><span>深圳 |</span><span>×</span></p> -->
+    		</div>
+    	</div>
+    	<div class="box" id="aim">
+    		<h2>想去的城市</h2>
+    		<div id="add">
+    			<!-- <p>深圳</p> -->
+    		</div>
+    	</div>
+    </div>
+
+<script type="text/javascript">
+	var aSpan=document.querySelectorAll(".box .city span"),
+		aSec=document.querySelectorAll(".box .sec")[0],
+		oAdd=document.getElementById("add"),
+		len=aSpan.length;
+		for(var i=0;i<len;i++){
+			aSpan[i].index=i;
+			aSpan[i].flag=false;
+			aSpan[i].onclick=function(){
+				var This=this;
+				if(!this.flag){
+					this.flag=true;
+					var txt=this.innerHTML;//获取城市
+					leftP.call(this,txt);
+					rightP.call(this,txt);
+				}
+			}
+		}
+		function leftP(val){
+			if(!this.lP){
+				this.lP=document.createElement("p");
+				this.lP.innerHTML="<span>"+val+" |</span>";
+				var oS=document.createElement("span");
+				oS.innerHTML="×";
+				oS.onclick=function(){
+					this.flag=false;
+					aSec.removeChild(this.lP);
+					oAdd.removeChild(this.rP);
+				}.bind(this)
+				this.lP.appendChild(oS);
+			}
+			aSec.appendChild(this.lP);
+		}
+
+		function rightP(val){
+			this.rP=document.createElement("p");
+			this.rP.innerHTML="<span>"+val+"</span>";
+			oAdd.appendChild(this.rP);
+		}
+
+
+</script>
+
+</body>
+</html>

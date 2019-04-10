@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>模板</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="shortcut icon" type="images/x-images" href="C:/Users/Asus/Desktop/假期作业/img/select/bq5.png" />
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+	div.wrap{
+		width:1000px;
+		margin: auto;
+		border:1px solid red;
+	}
+	div.header{
+		height:30px;
+		background: skyblue;
+		line-height: 30px;
+	}
+	.header h3{
+		float:left;
+		font-size: 16px;
+
+	}
+	.header span{
+		float :left;
+		width:8px;
+		height: 8px;
+		margin:10px 2px;
+		border-radius: 50%;
+		background: #ccc;
+	}
+	.header span.now{
+		background: #6f3;
+	}
+	.header i{
+		float:left;
+		height: 16px;
+		line-height: 16px;
+		margin:6px 0;
+		padding:0px 6px;
+		border:1px solid #ccc;
+		font-size: 14px;
+		font-style: normal;
+		cursor: pointer;
+	}
+	.header p{
+		float:right;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	div.content{
+		position:relative;
+		width:100%;
+		height: 250px;
+		margin-top:10px;
+		overflow: hidden;
+	}
+	.list{
+		position:relative;
+		width:100%;
+	}
+	ul{
+		width:300%;
+	}
+	ul li{
+		float: left;
+		margin:0 10px;
+	}
+	ul li img{
+		width:200px;
+		height: 200px;
+	}
+</style>
+</head>
+<body>
+    <div class="wrap">
+    	<div class="header">
+    		<h3>美女图集</h3>
+    		<div class="dot">
+
+    		</div>
+    		<i class="prev"> < </i>
+    		<i class="next"> > </i>
+    		<p>更多>> </p>
+    	</div>
+    	<div class="content">
+    		<div class="list">
+    			<ul>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    			<li><a href=""><img src="img/1.jpg" alt=""></a></li>
+    		</ul>
+    		</div>
+    	</div>
+    </div>
+
+
+
+
+<script src="js/jq2.2.2.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var $prev=$("i.prev");
+		var $next=$("i.next");
+		var $cont=$(".content");
+		var $w=$cont.width();
+		var $li=$(".content ul li");
+		var $list=$(".list");
+		var len=$li.length;
+		var page=1,count=4;//一页的个数
+		var page_count=Math.ceil(len/count);//几个页
+		for(var i=0;i<len/count;i++){
+			$("div.dot").append("<span class='dot'></span>");
+		}
+		$("div.dot span:first-child").addClass("now");
+
+		$next.click(function(){
+			if(!$list.is(":animated")){
+				if(!(page==page_count)){
+					$list.animate({left:"-="+$w,},1200);
+					page++;
+				}else{
+					$list.animate({left:"0",},1000);
+					page=1;
+				}
+				$("div.dot span").eq((page-1)).addClass("now").siblings().removeClass('now');
+			}
+		});
+		$prev.click(function(){
+			if(!$list.is(":animated")){
+				if(!(page==1)){
+					$list.animate({left:"+="+$w,},1200);
+					page--;
+				}else{
+					$list.animate({left:"-="+$w*(page_count-1),},1000);
+					page=page_count;
+				}
+			}
+			$("div.dot span").eq((page-1)).addClass("now").siblings().removeClass('now');
+		});
+			
+
+
+
+
+
+
+	});
+
+
+
+
+
+
+
+
+
+	
+</script>
+</body>
+</html>

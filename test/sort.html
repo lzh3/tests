@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>模板</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+
+	#box{
+		width:1000px;
+		margin:20px auto;
+		overflow: hidden;
+	}
+	ul.title{
+		width:998px;
+		height:40px;
+		border:1px solid #ddd;
+	}
+	ul.title li{
+		float:left;
+		width:100px;
+		height: 100%;
+		line-height:40px;
+		text-align:center;
+		cursor: pointer;
+	}
+	ul.content{
+		width:100%;
+		padding:10px 15px;
+	}
+	ul.content li{
+		position:relative;
+		float:left;
+		width:222px;
+		height:252px;
+		margin:10px 0 0 15px;
+		border:1px solid #ccc;
+		text-align: center;
+	}
+	ul.content li img{
+		width:185px;
+		height: 185px;
+		margin-top:18px;
+	}
+	ul.content li span{
+		position:absolute;
+		right:0;
+		bottom:0;
+		width:55px;
+		height:55px;
+		background: #E4393C;
+		border-radius: 34px 20px;
+		text-align: center;
+		line-height: 55px;
+		font-weight: bold;
+		color:#FFE218;
+	}
+	ul.content li p{
+		margin-top:20px;
+		text-align: left;
+		text-indent: 20px;
+		font-size: 12px;
+	}
+	ul.title li#price{
+		position: relative;
+	}
+	div.hide{
+		position:absolute;
+		display: none;
+		z-index: 99;
+		top:0;
+		left:0;
+		width:100px;
+		background: #fff;
+		line-height: 40px;
+		text-align: center;
+	}
+	div.hide p{
+		width:100%;
+		height:35px;
+		margin-bottom: 1px;
+		background: #eee;
+		font-size: 14px;
+	}
+	div.on{
+		display: block;
+	}
+</style>
+</head>
+<body>
+    <div id="box">
+    	<ul class="title">
+    		<li>推荐</li>
+    		<li>热销</li>
+    		<li>流行</li>
+    		<li id="price">
+    			<span>价格</span>
+    			<div class="hide">
+    				<p>价格从高到低</p>
+    				<p>价格从低到高</p>
+    			</div>
+    		</li>
+    	</ul>
+    	<ul class="content">
+    		<li>
+    			<img src="img/flower/xh_img1.jpg" alt="">
+    			<p>粉色玫瑰浪漫系列</p>
+    			<span>￥500</span>
+    		</li>
+    		<li>
+    			<img src="img/flower/xh_img2.jpg" alt="">
+    			<p>深红色经典玫瑰</p>
+    			<span>￥200</span>
+    		</li>
+    		<li>
+    			<img src="img/flower/xh_img3.jpg" alt="">
+    			<p>清淡优雅百年百合</p>
+    			<span>￥125</span>
+    		</li>
+    		<li>
+    			<img src="img/flower/xh_img4.jpg" alt="">
+    			<p>紫色冷艳系列</p>
+    			<span>￥300</span>
+    		</li>
+    		<li>
+    			<img src="img/flower/xh_img5.jpg" alt="">
+    			<p>经典红色我的最爱</p>
+    			<span>￥210</span>
+    		</li>
+    		<li>
+    			<img src="img/flower/xh_img6.jpg" alt="">
+    			<p>甜美七分袖荷叶边条纹设</p>
+    			<span>￥100</span>
+    		</li>
+    		<li>
+    			<img src="img/flower/xh_img7.jpg" alt="">
+    			<p>甜美七分袖荷叶边条纹设</p>
+    			<span>￥280</span>
+    		</li>
+    		<li>
+    			<img src="img/flower/xh_img8.jpg" alt="">
+    			<p>甜美七分袖荷叶边条纹设</p>
+    			<span>￥130</span>
+    		</li>
+    	</ul>
+    </div>
+
+	<script type="text/javascript">
+		var oPrice=document.getElementById("price");
+		var oHide=oPrice.getElementsByClassName("hide")[0];
+		var aP=oHide.getElementsByTagName("p");
+		var oSpan=oPrice.getElementsByTagName("span")[0];
+
+		var oCont=document.getElementsByClassName("content")[0]; 
+		var aLi=oCont.getElementsByTagName("li");
+		var aSpan=oCont.querySelectorAll("ul.content li span");
+		var len=aSpan.length;
+		var aImg=oCont.getElementsByTagName("img");
+		var allP=oCont.getElementsByTagName("p");
+		// 鼠标移入选择价格排序
+		oPrice.onmouseenter=function(){
+			oHide.classList.add('on');
+		}
+		oPrice.onmouseleave=function(){
+			oHide.classList.remove('on');
+		}
+
+		// 点击换价格的排序方式
+		for(var i=0;i<2;i++){
+			aP[i].index=i;
+			aP[i].onclick=function(){
+				oSpan.innerHTML=this.innerHTML;
+				oHide.classList.remove('on');
+				sort(this.index);
+			}
+		}
+
+		// 存储价格
+		var arr=[];
+		for(var i=0;i<len;i++){
+			arr[i]={
+				"src":aImg[i].src,
+				"des":allP[i].innerHTML,
+				"price":aSpan[i].innerHTML,
+				num:aSpan[i].innerHTML.substring(1)-0,
+			};
+		}
+		//排序后	显示内容
+		function sort(x){
+			/*if(!x){
+				arr.sort(function(a,b){return b.num-a.num;})
+			}else{
+				arr.sort(function(a,b){return a.num-b.num;})
+			}*/
+			var str="";
+			
+			arr.sort(
+                    x?
+                    function(a,b){return a.num-b.num}:
+                    function(a,b){return b.num-a.num}
+                );
+			oCont.innerHTML="";
+			for(var j=0;j<len;j++){
+				str += "<li><img src="+arr[j].src+" alt=''><p>"+arr[j].des+"</p><span>"+arr[j].price+"</span></li>";
+			}
+			oCont.innerHTML=str;
+			
+		}
+
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>

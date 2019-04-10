@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>模板</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="css/swiper-4.3.5.min.css">
+<link rel="stylesheet" href="css/animate.min.css">
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+	/*.swiper-container{
+		width:500px;
+		margin:20px auto;
+		border:2px solid aqua;
+	}*/
+	.ani{
+		font-size: 50px;
+	}
+</style>
+</head>
+<body>
+	<div class="swiper-container ">
+	    <div class="swiper-wrapper">
+	    	<div class="swiper-slide">
+	    		<span class="ani" swiper-animate-effect="fadeInRightBig" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">Slide 2</span>
+	    	</div>
+	   </div>
+	</div>
+	 <!--<div class="swiper-container">
+	    <div class="swiper-slide">
+			<p class="ani" swiper-animate-effect="rubberBand" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">I Love You!</p>
+		</div> 
+	 </div>-->
+	
+	<script src="js/swiper-4.3.5.min.js"></script>
+	<script src="js/swiper.animate1.0.3.min.js"></script>
+	<script> 
+	//Swiper4.x
+	   var mySwiper = new Swiper ('.swiper-container', {
+	   	// direction: 'horizontal',//竖屏
+	     on:{
+	       init: function(){
+	        	swiperAnimateCache(this); //隐藏动画元素 
+	        	swiperAnimate(this); //初始化完成开始动画
+	       }, 
+	       slideChangeTransitionEnd: function(){ 
+	        	swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+	       } 
+	     }
+	   }) 
+		
+	</script>
+</body>
+</html>

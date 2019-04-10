@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>表单作业</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+	input{outline: none;}
+	form{
+		width: 500px;
+		padding-bottom: 20px;
+		margin:30px auto;
+		border:5px solid skyblue;
+	}
+	form h2{
+		height: 40px;
+		line-height: 40px;
+		text-indent: 20px;
+		border-bottom: 1px solid #bbb;
+	}
+	.hot{
+		margin-top:18px;
+		padding-left:22px;
+	}
+	.cont{
+		width:430px;
+		margin-top: 5px;
+		margin-left:22px;
+	}
+	.cont>input{
+		width:208px;
+		box-sizing: border-box;
+	}
+	.cont .cycle{
+		margin-left: 8px;
+	}
+	.cont input{
+		height: 25px;
+		line-height: 25px;
+	}
+	.cont ul{
+		height: 25px;
+		margin-top: 18px;
+	}
+	.cont span{
+		padding:0 1px;
+	}
+	.cont ul li{
+		float:left;
+	}
+	.cont ul li span{
+		float: left; 
+		height:25px;
+		padding:0 1px;
+		font-size: 12px;
+		line-height: 25px;
+		background: skyblue;
+		color:white;
+	}
+	.cont ul li input{
+		width:158px;
+		border-left:none;
+		border:1px solid #bbb;
+		box-sizing: border-box;
+	}
+	.cont ul li.leave{
+		margin-left:13px;
+	}
+	.cont div{
+		height:25px;
+		margin-top: 18px;
+	}
+	.cont div span{
+		float: left;
+		height: 25px;
+		line-height: 25px;
+		padding:0 1px;
+		color:white;
+		font-size: 12px;
+		background: skyblue; 
+	}
+	.cont div input{
+		float:left;
+		width: 380px;
+		height: 25px;
+		border-left:none;
+		border:1px solid #bbb;
+		box-sizing:border-box;
+	}
+	.price{
+		width:430px;
+		margin-left: 22px;
+		margin-top: 20px;
+	}
+	.price h4{
+		font-size: 14px;
+	}
+	.price ul{
+		height:50px;
+	}
+	.price ul li{
+		float: left;
+		width: 50%;
+	}
+	.price ul li:nth-child(even){
+		text-align: center;
+	}
+	.self{
+		margin-left:22px;
+	}
+	.self span{
+		font-size: 12px;
+	}
+	.self input{
+		width:100px;
+		height: 20px;
+		box-sizing: border-box;
+	}
+	.self .btn{
+		width: 50px;
+		height:20px;
+		line-height: 20px;
+		background: rgba(153, 204, 255, 1);
+		color:white;
+		border:1px solid #3cc;
+		box-sizing: border-box;
+		vertical-align: bottom;
+	}
+</style>
+</head>
+<body>
+    <form action="http//:www.baidu.com" method="get">
+    	<h2>酒店预订</h2>
+    	<div class="hot">
+	    	<input type="radio" name="hotel" id="in">
+	    	<label for="in">国内酒店</label>
+	    	<input type="radio" name="hotel" id="out">
+	    	<label for="out">国外酒店</label>
+		</div>
+		<div class="cont">
+			<input type="text" list="dest" placeholder="--请选择目的地--">
+			<datalist id="dest">
+				<option>北京</option>
+				<option>上海</option>
+				<option>深圳</option>
+				<option>杭州</option>
+				<option>武汉</option>
+			</datalist>
+			<input type="text" class="cycle" list="comc" placeholder="--请选择酒店商圈--">
+			<datalist id="comc">
+				<option>热门品牌</option>
+				<option>热门活动</option>
+				<option>热门位置</option>
+				<option>热门装饰</option>
+				<option>热门服务</option>
+			</datalist>
+			<ul>
+				<li>
+					<span>入住时间</span>
+					<input type="text">
+				</li>
+				<li class="leave">
+					<span>离开时间</span>
+					<input type="text">
+				</li>
+			</ul>
+			<div>
+				<span>酒店级别</span>
+				<input type="text">
+			</div>
+		</div>
+		<div class="price">
+			<h4>选择价格范围</h4>
+			<ul>
+				<li><input type="radio" name="money" id="c1"><label for="c1">￥150以下</label></li>
+				<li><input type="radio" name="money" id="c2"><label for="c2">￥200以下</label></li>
+				<li><input type="radio" name="money" id="c3"><label for="c3">￥300以下</label></li>
+				<li><input type="radio" name="money" id="c4"><label for="c4">￥500以下</label></li>
+			</ul>
+			
+		</div>
+		<div class="self">
+			<span>自定义:</span>
+			<input type="text" name="">
+			<span>-</span>
+			<input type="text" name="">
+			<input type="submit" class="btn" name="sub" value="确定">
+		</div>
+    </form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>模板</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="shortcut icon" type="images/x-images" href="C:/Users/Asus/Desktop/假期作业/img/select/bq5.png" />
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+
+	.box{
+		width:400px;
+		margin:20px auto;
+		border:1px solid skyblue;
+	}
+	.box h3{
+		width:100%;
+		height: 35px;
+		line-height: 35px;
+		text-indent: 10px;
+		background: skyblue;
+	}
+	.box p{
+		width:100%;
+		font-size: 16px;
+		display: none;
+		overflow: hidden;
+	}
+</style>
+</head>
+<body>
+    <div class="box">
+    	<h3>我是标题</h3>
+    	<p>返回传给jQuery()的原始的DOM节点内容，即jQuery()的第二个参数。如果没有指定    ，那么context指向当前的文档(document)。可以与selector一起使用，用于精确检测选择器查询情况。这两个属性对插件开发人员很有用。</p>
+    </div>
+
+
+<script src="js/jq2.2.2.js"></script>
+<script type="text/javascript">
+	/*$(".box h3").hover(function(){
+		$(".box p").fadeIn(1000);
+	},function(){
+		$(".box p").fadeOut(1000);
+	});*/
+	$(".box h3").on("mouseenter",function(){
+		//$(".box p").slideDown(1000);
+		$(this).next().slideDown(1000);
+	});
+
+
+</script>
+</body>
+</html>

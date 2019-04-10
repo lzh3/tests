@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>模板</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" type="images/x-images" href="C:/Users/Asus/Desktop/假期作业/img/select/bq5.png"/>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+    var cookie={
+        oSet:function(cJson,cTime){
+            var d=new Date(new Date().getTime()+cTime*24*60*60*1000).toUTCString();
+            for(key in cJson){
+                document.cookie= key+"="+cJson[key]+";expires="+d+";";
+            }
+        },
+        oGet:function(attr){
+            var cook=document.cookie;
+            var reg=new RegExp("\\b"+attr+"=([^;]+)($|;)");
+            var attr_val=cook.match(reg);
+            if(attr_val){
+                return attr_val[1];
+            }else{
+                return "";
+            }
+        },
+        oRemove:function(attr){
+            var obj={};
+            obj[attr]="";
+            this.oSet(obj,-1);
+        }
+    };
+    cookie.oSet({
+        name:"LLL",
+        act:"dance",
+        content:"beautiful girl"
+    },5);
+    var x=cookie.oGet(name);
+    alert(x)
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>模板</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="shortcut icon" type="images/x-images" href="C:/Users/Asus/Desktop/假期作业/img/select/bq5.png" />
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+
+	#box1{
+		width:150px;
+		height:150px;
+		margin:20px auto;
+		padding:20px;
+		background: pink;
+	}
+	#box2{
+		width:100px;
+		height:100px;
+		margin:auto;
+		padding:20px;
+		background: skyblue;
+	}
+	#box3{
+		width:50px;
+		height: 50px;
+		margin:auto;
+		padding:20px;
+		background: #ccc;
+	}
+</style>
+</head>
+<body>
+    <div id="box1">1
+    	<div id="box2">2
+    		<div id="box3">3</div>
+    	</div>
+    </div>
+
+<script type="text/javascript">
+	var oBox1=document.getElementById("box1"),
+		oBox2=document.getElementById("box2"),
+		oBox3=document.getElementById("box3");
+
+		oBox1.addEventListener("click",function(e){
+			alert("box1");
+		});
+		oBox2.addEventListener("click",function(e){
+			alert("box2");
+			e.stopPropagation();
+		});
+		oBox3.addEventListener("click",function(e){
+			alert("box3");
+			//e.stopPropagation();
+		});
+		oBox2.addEventListener("mouseenter",function(e){
+			this.style.background="green";
+			//alert("变绿");
+		})
+
+</script>
+</body>
+</html>

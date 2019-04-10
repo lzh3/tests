@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>模板</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+
+	#box{
+		width:500px;
+		height: 35px;
+		margin:20px auto;
+		background: #f9f;
+		text-align: center;
+		line-height: 35px;
+		color:yellow;
+	}
+	#box span{
+		color:red;
+	}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+
+<script type="text/javascript">
+	var oBox=document.getElementById("box");
+	var birth=new Date(2018,10,13);
+	function fn(){
+		var now=new Date;
+		var mins=Math.floor((birth-now)/1000);
+
+		var d=Math.floor(mins/60/60/24);
+		var h=Math.floor(mins/60/60)%24;
+		var m=Math.floor(mins/60)%60;
+		var s=mins%24;
+		d=add0(d);
+		h=add0(h);
+		m=add0(m);
+		s=add0(s);
+		oBox.innerHTML="距离大胸姐的生日还有<span>"+d+"</span>天<span>"+h+"</span>小时<span>"+m+"</span>分钟<span>"+s+"</span>秒";
+		//console.log(m)
+		return fn;
+	}
+	function add0(n){
+		return n<10?"0"+n:n;
+	}
+	setInterval(fn(),1000);
+
+
+
+</script>
+
+</body>
+</html>

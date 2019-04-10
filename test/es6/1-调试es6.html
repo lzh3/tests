@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>模板</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="shortcut icon" type="images/x-images" href="C:/Users/Asus/Desktop/假期作业/img/select/bq5.png" />
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ul{list-style:none;}
+
+	
+</style>
+</head>
+<body>
+    
+
+<div class="box"></div>
+<script type="text/javascript">
+	//"use strict"
+	//let a=1;
+	/*let [a,b]=[1,2,3];
+	console.log(a)
+	console.log(b)
+{
+	let b={a:"John"};
+	console.log(b.a)
+}*/
+
+/*let obj={
+	a:1,
+	b:2,
+	c:3
+};*/
+/*let {a:e,b:f}=obj;
+console.log(e)
+console.log(f)
+console.log(obj.a)*/
+
+/*let [e,f]="ioe";
+console.log(e)*/
+
+/*function fn({a,b=10,c}){
+	console.log(a+b+c)
+}
+fn({a:2,c:5})*/
+
+/*let str="今天下了雨。"
+let s=str.repeat(3);
+var oBox=document.getElementsByClassName(".box")[0];
+//oBox.innerHTML=s;
+//oBox.innerHTML=12344;
+console.log(s)*/
+// 模板字符串
+/*let s="you";
+let ss="me";
+let all= `${s} are not ${ss}!`;
+console.log(all)*/
+function fn(a,b){
+	console.log(arguments[0]);
+	console.log(arguments[1]);
+	/*for(let i=0;i<arguments.length;i++){
+		console.log(arguments[i])
+	}*/
+}
+let a=1,b=3;
+
+fn`${a} ${b}`;
+
+
+</script>
+</body>
+</html>
